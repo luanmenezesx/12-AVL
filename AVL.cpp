@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 /* -----------------------------------------------------------
@@ -140,7 +140,14 @@ int fatorBalanceamento(NO* no) {
     return alturaNo(no->esq) - alturaNo(no->dir);
 }
 
-NO* girarDireita(NO* y) {  
+NO* girarDireita(NO* y) { 
+    NO* x = y->esq;
+    y->esq = x->dir;
+    raiz = x;
+    x->dir = y;
+    alturaNo(x);
+    alturaNo(y);
+    return raiz = x;
    /* Rotação simples à direita  
              y                x  
             / \              / \  
@@ -160,6 +167,15 @@ NO* girarDireita(NO* y) {
 }  
 
 NO* girarEsquerda(NO* x) {  
+    NO* y = x->dir;
+    NO* aux = y;
+    NO* aux2 = y;
+    x->dir = y->esq;
+    raiz = y;
+    y->esq = x;
+    alturaNo(x);
+    alturaNo(y);
+    return raiz = y;
    /* Rotação simples à esquerda  
            x                    y  
           / \                  / \  
